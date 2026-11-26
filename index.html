@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTECH | Transformando com Tecnologia</title>
+<meta name="description" content="GTECH: formatação, manutenção, otimização, upgrade e limpeza de computadores. Solicite seu orçamento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== CORES E FONTES: edite aqui para mudar o visual do site todo ===== */
+  :root {
+    --bg: #000000;
+    --surface: #0D0D0D;
+    --ink: #FFFFFF;
+    --muted: #B8B8B8;
+    --brand: #FF169C;       /* rosa Gtech */
+    --brand-ink: #FFFFFF;   /* texto sobre o rosa */
+    --accent: #FF169C;
+    --line: #2B2B2B;
+    --font-title: 'Sora', 'Segoe UI', sans-serif;
+    --font-body: 'Manrope', 'Segoe UI', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body { position: relative; overflow-x: hidden; }
+  main, footer { position: relative; z-index: 1; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.65; }
+  h1, h2, h3 { font-family: var(--font-title); line-height: 1.2; }
+  a { color: inherit; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 88px 0; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+
+  /* ===== Fundo com brilhos rosa e símbolos de tecnologia ===== */
+  .bg-fx { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(500px circle at 88% 4%,  rgba(255,22,156,.30), transparent 70%),
+      radial-gradient(420px circle at 4% 22%,  rgba(255,22,156,.20), transparent 70%),
+      radial-gradient(520px circle at 92% 45%, rgba(255,22,156,.18), transparent 70%),
+      radial-gradient(460px circle at 8% 68%,  rgba(255,22,156,.22), transparent 70%),
+      radial-gradient(560px circle at 70% 96%, rgba(255,22,156,.26), transparent 70%); }
+  .bg-fx .s { position: absolute; color: var(--brand); font-family: 'Courier New', monospace; font-weight: 700; line-height: 1; user-select: none; }
+  .bg-fx svg { position: absolute; fill: none; stroke: var(--brand); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Botões */
+  .btn { display: inline-block; padding: 14px 26px; border-radius: 10px; font-weight: 600; text-decoration: none; border: 2px solid var(--brand); cursor: pointer; font-size: 1rem; font-family: inherit; }
+  .btn-primary { background: var(--brand); color: var(--brand-ink); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  .btn-whats { background: #1FA855; border-color: #1FA855; color: #fff; }
+
+  /* Cabeçalho */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(0,0,0,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { font-family: var(--font-title); font-weight: 700; font-size: 1.2rem; text-decoration: none; }
+  .logo-g { color: var(--brand); }
+  nav { display: flex; align-items: center; gap: 26px; }
+  nav a { text-decoration: none; color: var(--muted); font-weight: 500; }
+  nav a:hover { color: var(--ink); }
+  nav .btn { padding: 9px 18px; color: #fff; }
+
+  /* Início */
+  .hero { padding: 110px 0 96px; }
+  .hero h1 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); max-width: 16ch; letter-spacing: -0.02em; }
+  .hero p { max-width: 52ch; margin: 22px 0 34px; color: var(--muted); font-size: 1.15rem; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  /* Conheça a empresa */
+  #empresa { background: rgba(13,13,13,.72); border-block: 1px solid var(--line); }
+  .about { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: start; }
+  .about h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: 18px; }
+  .about p { color: var(--muted); margin-bottom: 16px; max-width: 60ch; }
+  .facts { display: grid; gap: 14px; }
+  .facts h3 { font-size: 1.3rem; margin-bottom: 6px; }
+  .section-intro { color: var(--muted); max-width: 60ch; margin: -20px 0 36px; }
+  .fact { border-left: 4px solid var(--accent); padding: 4px 0 4px 18px; }
+  .fact strong { font-family: var(--font-title); display: block; font-size: 1.15rem; }
+  .fact span { color: var(--muted); font-size: .95rem; }
+
+  /* Soluções */
+  #solucoes h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: 36px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px; }
+  .card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+  .card p { color: var(--muted); font-size: .97rem; }
+
+  /* WhatsApp */
+  #contato { background: linear-gradient(180deg, transparent, rgba(255,22,156,.16)); color: #FFFFFF; }
+  #contato h2 { color: #FFFFFF; }
+  #contato h2::after { content: ''; display: block; width: 56px; height: 5px; background: var(--brand); margin-top: 14px; }
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .contact h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: 14px; }
+  .contact p { opacity: .9; max-width: 44ch; }
+  form { background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 16px; padding: 28px; display: grid; gap: 14px; }
+  label { font-weight: 600; font-size: .92rem; display: grid; gap: 6px; }
+  input, textarea { font: inherit; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+  textarea { min-height: 96px; resize: vertical; }
+
+  footer { padding: 32px 0; color: var(--muted); font-size: .9rem; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  @media (max-width: 760px) {
+    section { padding: 64px 0; }
+    .about, .contact { grid-template-columns: 1fr; gap: 32px; }
+    nav a:not(.btn) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="bg-fx" aria-hidden="true">
+  <span class="s" style="top:7%;left:72%;font-size:64px;opacity:0.35;transform:rotate(-8deg)">&lt;/&gt;</span>
+  <span class="s" style="top:14%;left:6%;font-size:52px;opacity:0.28;transform:rotate(6deg)">{ }</span>
+  <span class="s" style="top:22%;left:86%;font-size:40px;opacity:0.25;transform:rotate(0deg)">01</span>
+  <span class="s" style="top:31%;left:12%;font-size:70px;opacity:0.2;transform:rotate(10deg)">#</span>
+  <span class="s" style="top:38%;left:78%;font-size:46px;opacity:0.3;transform:rotate(0deg)">>_</span>
+  <span class="s" style="top:47%;left:5%;font-size:38px;opacity:0.22;transform:rotate(-6deg)">&amp;&amp;</span>
+  <span class="s" style="top:53%;left:60%;font-size:34px;opacity:0.2;transform:rotate(0deg)">1010</span>
+  <span class="s" style="top:60%;left:90%;font-size:56px;opacity:0.24;transform:rotate(8deg)">( )</span>
+  <span class="s" style="top:67%;left:8%;font-size:44px;opacity:0.26;transform:rotate(6deg)">&lt;/&gt;</span>
+  <span class="s" style="top:74%;left:82%;font-size:60px;opacity:0.22;transform:rotate(-10deg)">AI</span>
+  <span class="s" style="top:81%;left:38%;font-size:48px;opacity:0.18;transform:rotate(0deg)">{ }</span>
+  <span class="s" style="top:88%;left:10%;font-size:36px;opacity:0.24;transform:rotate(0deg)">0110</span>
+  <span class="s" style="top:93%;left:70%;font-size:42px;opacity:0.28;transform:rotate(0deg)">>_</span>
+  <span class="s" style="top:4%;left:28%;font-size:40px;opacity:0.2;transform:rotate(0deg)">//</span>
+  <!-- chip -->
+  <svg style="top:17%;left:62%;width:110px;opacity:.30" viewBox="0 0 64 64"><rect x="16" y="16" width="32" height="32" rx="4"/><rect x="26" y="26" width="12" height="12"/><path d="M24 8v8M32 8v8M40 8v8M24 48v8M32 48v8M40 48v8M8 24h8M8 32h8M8 40h8M48 24h8M48 32h8M48 40h8"/></svg>
+  <!-- circuito -->
+  <svg style="top:57%;left:20%;width:170px;opacity:.22" viewBox="0 0 100 60"><path d="M2 10h30l8 12h28l8-12h22M2 50h22l10-14h34l10 14h20"/><circle cx="32" cy="10" r="3"/><circle cx="68" cy="22" r="3"/><circle cx="24" cy="50" r="3"/><circle cx="78" cy="36" r="3"/></svg>
+  <!-- wifi -->
+  <svg style="top:42%;left:40%;width:80px;opacity:.18" viewBox="0 0 64 64"><path d="M6 24a38 38 0 0 1 52 0M16 34a24 24 0 0 1 32 0M26 44a10 10 0 0 1 12 0"/><circle cx="32" cy="54" r="2"/></svg>
+  <!-- nuvem -->
+  <svg style="top:84%;left:78%;width:120px;opacity:.24" viewBox="0 0 64 64"><path d="M18 46a12 12 0 0 1-1-24 16 16 0 0 1 30 4 10 10 0 0 1 0 20z"/></svg>
+</div>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#inicio"><span class="logo-g">G</span>TECH</a>
+    <nav aria-label="Principal">
+      <a href="#empresa">Quem somos</a>
+      <a href="#solucoes">Serviços</a>
+      <a class="btn btn-whats" href="#contato">Fale no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- INÍCIO -->
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <h1>Transformando com tecnologia</h1>
+      <p>Manutenção, otimização e melhoria do desempenho do seu computador, com qualidade e atenção a cada detalhe.</p>
+      <div class="actions">
+        <a class="btn btn-whats" href="https://wa.me/5579996087377?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Solicitar orçamento</a>
+        <a class="btn btn-primary" href="#solucoes">Ver serviços</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUEM SOMOS -->
+  <section id="empresa">
+    <div class="wrap about">
+      <div>
+        <h2>Quem somos?</h2>
+        <p>A GTECH é uma empresa dedicada a oferecer soluções em tecnologia e informática, com foco em manutenção, otimização e melhoria do desempenho de computadores.</p>
+        <p>Nosso objetivo é tornar a tecnologia mais acessível, prática e eficiente, oferecendo serviços com qualidade, atenção aos detalhes e compromisso com as necessidades de cada cliente.</p>
+        <p>Acreditamos que um computador bem cuidado faz toda a diferença no dia a dia, seja para trabalhar, estudar ou aproveitar seus momentos de lazer.</p>
+      </div>
+      <div class="facts">
+        <h3>Por que escolher a GTECH?</h3>
+        <div class="fact"><strong>Compromisso com a qualidade</strong></div>
+        <div class="fact"><strong>Atendimento atencioso</strong></div>
+        <div class="fact"><strong>Soluções de acordo com cada necessidade</strong></div>
+        <div class="fact"><strong>Dedicação em cada serviço</strong></div>
+        <div class="fact"><strong>Foco em tecnologia e inovação</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS: duplique um bloco .card para adicionar outro serviço -->
+  <section id="solucoes">
+    <div class="wrap">
+      <h2>Nossos serviços</h2>
+      <p class="section-intro">Oferecemos soluções completas para cuidar do seu equipamento.</p>
+      <div class="grid">
+        <div class="card"><h3>Formatação e manutenção de computadores</h3><p>Realizamos formatação e manutenção para melhorar o funcionamento do computador, solucionar problemas e proporcionar uma experiência de uso mais eficiente.</p></div>
+        <div class="card"><h3>Instalação de programas e Windows</h3><p>Instalamos sistemas operacionais e programas, preparando seu computador para suas atividades diárias.</p></div>
+        <div class="card"><h3>Otimização de computadores</h3><p>Trabalhamos para melhorar o desempenho do equipamento, buscando proporcionar mais agilidade e fluidez durante o uso.</p></div>
+        <div class="card"><h3>Upgrade de SSD e memória RAM</h3><p>Realizamos melhorias de hardware para aumentar a capacidade e o desempenho do computador, de acordo com a compatibilidade do equipamento.</p></div>
+        <div class="card"><h3>Limpeza preventiva</h3><p>Cuidados com a limpeza interna e externa do computador, contribuindo para a conservação dos componentes e o bom funcionamento do equipamento.</p></div>
+        <div class="card"><h3>Montagem de computadores</h3><p>Auxiliamos na montagem de computadores, considerando as necessidades e os objetivos de cada cliente.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO / WHATSAPP -->
+  <section id="contato">
+    <div class="wrap contact">
+      <div>
+        <h2>Entre em contato</h2>
+        <p>Seu computador precisa de atenção ou está na hora de melhorar seu desempenho?</p>
+        <p style="margin-top:12px">Conte com a GTECH! Preencha ao lado, conheça nossos serviços e solicite um orçamento pelo WhatsApp.</p>
+      </div>
+      <form id="form-whats">
+        <label>Seu nome
+          <input type="text" id="nome" required autocomplete="name">
+        </label>
+        <label>Qual serviço você precisa?
+          <textarea id="mensagem" required></textarea>
+        </label>
+        <button class="btn btn-whats" type="submit">Solicitar orçamento</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="ano"></span> GTECH — Transformando com Tecnologia.</span>
+    <span>gabempresas@gmail.com</span>
+  </div>
+</footer>
+
+<script>
+  // ===== TROQUE PELO SEU NÚMERO: país + DDD + número, só dígitos (ex.: 5579912345678) =====
+  var NUMERO_WHATSAPP = "5579996087377";
+
+  document.getElementById("ano").textContent = new Date().getFullYear();
+
+  document.getElementById("form-whats").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var nome = document.getElementById("nome").value.trim();
+    var msg = document.getElementById("mensagem").value.trim();
+    var texto = "Olá! Meu nome é " + nome + ". " + msg;
+    window.open("https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(texto), "_blank", "noopener");
+  });
+</script>
+</body>
+</html>
